@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+//classes will be compiled to byte code Java 8
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+
+android {
+    compileSdkVersion 28
+
+    //activer le databinding
+    dataBinding{
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "fr.traore.adama.boxotopapp"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "ApiKey", Boxotop_ApiKey
+        }
+
+        debug{
+            buildConfigField 'String', "ApiKey", Boxotop_ApiKey
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$androidx_version"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    //Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    //Data binding
+    kapt "com.android.databinding:compiler:3.1.4"
+
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.5"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    //okhttp3
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Dagger 2
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+    compileOnly "org.glassfish:javax.annotation:3.1.1"
+
+    //Rx
+    implementation "io.reactivex.rxjava2:rxjava:2.1.15"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+
+}
