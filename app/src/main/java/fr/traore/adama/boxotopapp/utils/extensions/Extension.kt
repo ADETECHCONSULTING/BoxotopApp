@@ -34,3 +34,7 @@ fun View.getParentActivity(): AppCompatActivity?{
     }
     return null
 }
+
+fun String.searchable() : String{
+    return this.toLowerCase().trim()
+}

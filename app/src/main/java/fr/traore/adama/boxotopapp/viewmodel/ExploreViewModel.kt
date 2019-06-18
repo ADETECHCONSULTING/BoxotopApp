@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 class ExploreViewModel : BaseViewModel() {
     val Tag: String = ExploreViewModel::class.java.simpleName;
-    var myMovieListAdapter = MovieListAdapter()
+    private var myMovieListAdapter = MovieListAdapter()
 
     @Inject
     lateinit var movieApi: MovieApi
@@ -76,4 +76,5 @@ class ExploreViewModel : BaseViewModel() {
     fun getMovieListAdapter() : MovieListAdapter{
         return myMovieListAdapter
     }
+
 }

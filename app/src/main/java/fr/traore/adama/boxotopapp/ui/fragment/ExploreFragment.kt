@@ -3,8 +3,10 @@ package fr.traore.adama.boxotopapp.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -27,6 +29,8 @@ class ExploreFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_explore, container, false)
         val view = binding.root
@@ -48,6 +52,28 @@ class ExploreFragment : BaseFragment() {
 
         return view
     }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+
+        val searchMenuItem = menu.findItem(R.id.action_search)
+        val searchView = searchMenuItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.getMovieListAdapter().filterData(newText)
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                // task HERE
+                return false
+            }
+
+        })
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

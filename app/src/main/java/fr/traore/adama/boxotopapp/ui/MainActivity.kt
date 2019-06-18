@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import fr.traore.adama.boxotopapp.R
 import fr.traore.adama.boxotopapp.ui.fragment.ExploreFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         changeFragment(ExploreFragment.newInstance())
+
+        setSupportActionBar(toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

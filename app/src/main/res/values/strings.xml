@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BoxotopApp</string>
+    <string name="app_name">Boxotop</string>
     <string name="search">Search</string>
     <string name="search_hint">search a movie</string>
     <string name="retry">réessayer</string>
