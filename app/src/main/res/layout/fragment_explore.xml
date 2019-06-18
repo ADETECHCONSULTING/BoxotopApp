@@ -24,7 +24,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcvHaircuts"
+                android:id="@+id/rcvMovies"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_movie"

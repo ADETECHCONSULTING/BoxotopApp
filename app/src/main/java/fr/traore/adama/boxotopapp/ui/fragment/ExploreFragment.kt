@@ -2,7 +2,6 @@ package fr.traore.adama.boxotopapp.ui.fragment
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-
 import fr.traore.adama.boxotopapp.R
 import fr.traore.adama.boxotopapp.databinding.FragmentExploreBinding
 import fr.traore.adama.boxotopapp.ui.adapter.MovieAdapter
@@ -35,7 +32,7 @@ class ExploreFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_explore, container, false)
         val view = binding.root
 
-        binding.rcvHaircuts.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.rcvMovies.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 
         viewModel = ViewModelProviders.of(this).get(ExploreViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer {errorMessage ->
@@ -53,7 +50,7 @@ class ExploreFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val adapter = MovieAdapter(context!!)
-        binding.rcvHaircuts.adapter = adapter
+        binding.rcvMovies.adapter = adapter
     }
 
 

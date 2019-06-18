@@ -1,6 +1,5 @@
 package fr.traore.adama.boxotopapp.model
 
-import javax.annotation.Generated
 import com.squareup.moshi.Json
 
 data class MovieItem(

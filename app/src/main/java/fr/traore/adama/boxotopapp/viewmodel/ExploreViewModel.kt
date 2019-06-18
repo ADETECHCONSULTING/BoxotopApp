@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import fr.traore.adama.boxotopapp.R
 import fr.traore.adama.boxotopapp.network.MovieApi
 import fr.traore.adama.boxotopapp.utils.Constants
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -52,7 +53,7 @@ class ExploreViewModel : BaseViewModel() {
     }
 
     private fun onRetrieveMoviesListError(error: String){
-        //errorMessage.value =    R.string.haircuts_fetch_error
+        errorMessage.value = R.string.movies_fetch_error
 
         Log.d(Tag, error)
     }
