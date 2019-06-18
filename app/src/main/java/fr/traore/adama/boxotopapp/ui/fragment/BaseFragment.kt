@@ -15,7 +15,7 @@ abstract class BaseFragment : Fragment(){
         errorSnackbar?.show()
     }
 
-    protected fun hideError(){
+    protected fun hideError() {
         errorSnackbar?.dismiss()
     }
 }

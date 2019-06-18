@@ -5,7 +5,9 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import fr.traore.adama.boxotopapp.R
+import fr.traore.adama.boxotopapp.model.MovieResponse
 import fr.traore.adama.boxotopapp.network.MovieApi
+import fr.traore.adama.boxotopapp.ui.adapter.MovieListAdapter
 import fr.traore.adama.boxotopapp.utils.Constants
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -14,6 +16,7 @@ import javax.inject.Inject
 
 class ExploreViewModel : BaseViewModel() {
     val Tag: String = ExploreViewModel::class.java.simpleName;
+    var myMovieListAdapter = MovieListAdapter()
 
     @Inject
     lateinit var movieApi: MovieApi
@@ -35,26 +38,27 @@ class ExploreViewModel : BaseViewModel() {
             .doOnSubscribe { onRetrieveMoviesListStart() }
             .doOnTerminate { onRetrieveMoviesListFinish() }
             .subscribe(
-                {onRetrieveMoviesListSuccess()},
+                {result -> onRetrieveMoviesListSuccess(result)},
                 {error -> onRetrieveMoviesListError(error.localizedMessage)}
             )
     }
 
     private fun onRetrieveMoviesListStart(){
-        //loadingVisibility.value = View.VISIBLE
+        loadingVisibility.value = View.VISIBLE
+        errorMessage.value = null
     }
 
     private fun onRetrieveMoviesListFinish(){
-        //loadingVisibility.value = View.GONE
+        loadingVisibility.value = View.GONE
     }
 
-    private fun onRetrieveMoviesListSuccess(){
-
+    private fun onRetrieveMoviesListSuccess(movieResponse : MovieResponse){
+        if(movieResponse.results != null)
+            myMovieListAdapter.resetData(movieResponse.results)
     }
 
     private fun onRetrieveMoviesListError(error: String){
         errorMessage.value = R.string.movies_fetch_error
-
         Log.d(Tag, error)
     }
 
@@ -67,5 +71,9 @@ class ExploreViewModel : BaseViewModel() {
 
     fun getLoadingVisibility() : LiveData<Int> {
         return loadingVisibility
+    }
+
+    fun getMovieListAdapter() : MovieListAdapter{
+        return myMovieListAdapter
     }
 }
