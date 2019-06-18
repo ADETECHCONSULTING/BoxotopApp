@@ -2,6 +2,7 @@ package fr.traore.adama.boxotopapp.dagger.components
 
 import dagger.Component
 import fr.traore.adama.boxotopapp.dagger.modules.NetworkModule
+import fr.traore.adama.boxotopapp.viewmodel.DetailViewModel
 import fr.traore.adama.boxotopapp.viewmodel.ExploreViewModel
 import javax.inject.Singleton
 
@@ -14,6 +15,7 @@ interface ViewModelComponent{
      * @param exploreViewModel ExploreViewModel in which to inject the dependencies
      */
     fun inject(exploreViewModel: ExploreViewModel)
+    fun inject(detailViewModel: DetailViewModel)
 
 
     @Component.Builder

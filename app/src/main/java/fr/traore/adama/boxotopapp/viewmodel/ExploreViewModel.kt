@@ -6,25 +6,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import fr.traore.adama.boxotopapp.R
 import fr.traore.adama.boxotopapp.model.MovieResponse
-import fr.traore.adama.boxotopapp.network.MovieApi
 import fr.traore.adama.boxotopapp.ui.adapter.MovieListAdapter
 import fr.traore.adama.boxotopapp.utils.Constants
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
+
 
 class ExploreViewModel : BaseViewModel() {
     val Tag: String = ExploreViewModel::class.java.simpleName;
     private var myMovieListAdapter = MovieListAdapter()
 
-    @Inject
-    lateinit var movieApi: MovieApi
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
-    val errorMessage: MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadMovies() }
 
-    private lateinit var subscription: Disposable
 
     init {
         loadMovies()
@@ -68,6 +62,8 @@ class ExploreViewModel : BaseViewModel() {
         if(!subscription.isDisposed)
             subscription.dispose()
     }
+
+
 
     fun getLoadingVisibility() : LiveData<Int> {
         return loadingVisibility

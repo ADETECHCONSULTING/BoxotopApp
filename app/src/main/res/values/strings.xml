@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Boxotop</string>
-    <string name="search">Search</string>
-    <string name="search_hint">search a movie</string>
+    <string name="search">Recherche</string>
+    <string name="search_hint">rechercher un film</string>
+    <string name="explore_title">Box office</string>
+    <string name="detail_title">Détail</string>
     <string name="retry">réessayer</string>
     <string name="movies_fetch_error">Erreur lors du chargement des films...</string>
+    <string name="movie_detail_fetch_error">Erreur lors du chargement du film...</string>
+    <string name="overview"><u>Synopsis</u></string>
 
 </resources>

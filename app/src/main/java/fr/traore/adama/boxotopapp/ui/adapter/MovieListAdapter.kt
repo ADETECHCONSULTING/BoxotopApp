@@ -1,12 +1,15 @@
 package fr.traore.adama.boxotopapp.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import fr.traore.adama.boxotopapp.R
 import fr.traore.adama.boxotopapp.databinding.ItemMovieBinding
 import fr.traore.adama.boxotopapp.model.MovieItem
+import fr.traore.adama.boxotopapp.ui.MainActivity
+import fr.traore.adama.boxotopapp.ui.fragment.DetailFragment
 import fr.traore.adama.boxotopapp.utils.extensions.searchable
 import fr.traore.adama.boxotopapp.viewmodel.MovieListItemViewModel
 
@@ -47,13 +50,24 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieHolder>() {
     }
 
 
-    class MovieHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MovieHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
         private val viewModel = MovieListItemViewModel()
+
+        init {
+            binding.root.setOnClickListener(this)
+        }
 
         fun bind(item: MovieItem) {
             viewModel.bind(item)
             binding.viewModel = viewModel
         }
+
+        override fun onClick(v: View?) {
+            val activity = v?.context as MainActivity
+            activity.changeFragment(DetailFragment.newInstance(viewModel.movieId.value))
+        }
+
+
     }
 }

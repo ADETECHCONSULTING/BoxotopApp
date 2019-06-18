@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content">
 
             <ImageView
-                    android:id="@+id/imv_movie"
+                    android:id="@+id/imvMovie"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
@@ -27,10 +27,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/txv_title"/>
+                    app:layout_constraintBottom_toTopOf="@+id/txvTitle"/>
 
             <TextView
-                    android:id="@+id/txv_title"
+                    android:id="@+id/txvTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -40,13 +40,13 @@
                     app:mutableText="@{viewModel.getTitle()}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@color/colorTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/imv_movie"
+                    app:layout_constraintTop_toBottomOf="@+id/imvMovie"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/txv_subtext"/>
+                    app:layout_constraintBottom_toTopOf="@+id/txvSubtext"/>
 
             <TextView
-                    android:id="@+id/txv_subtext"
+                    android:id="@+id/txvSubtext"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -57,42 +57,11 @@
                     android:textColor="@color/color_content"
                     android:lines="3"
                     android:ellipsize="end"
-                    app:layout_constraintTop_toBottomOf="@+id/txv_title"
+                    app:layout_constraintTop_toBottomOf="@+id/txvTitle"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/action_button_1"/>
-
-            <Button
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:id="@+id/action_button_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="8dp"
-                    android:minWidth="0dp"
-                    android:paddingStart="8dp"
-                    android:text="Action 1"
-                    android:paddingEnd="8dp"
-                    android:textColor="#DE000000"
-                    app:layout_constraintTop_toBottomOf="@+id/txv_subtext"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
             />
-
-            <Button
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:id="@+id/action_button_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:minWidth="0dp"
-                    android:text="Action 2"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:textColor="#DE000000"
-                    app:layout_constraintTop_toTopOf="@+id/action_button_1"
-                    app:layout_constraintStart_toEndOf="@+id/action_button_1"/>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

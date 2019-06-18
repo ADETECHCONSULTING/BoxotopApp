@@ -8,11 +8,13 @@ class MovieListItemViewModel: BaseViewModel(){
     private val imageUrl = MutableLiveData<String>()
     private val title = MutableLiveData<String>()
     private val overview = MutableLiveData<String>()
+    val movieId = MutableLiveData<Int>()
 
     fun bind(movie: MovieItem){
         imageUrl.value = Constants.BASE_IMAGE_URL+movie.poster_path
         title.value = movie.title
         overview.value = movie.overview
+        movieId.value = movie.id
     }
 
     fun getImageUrl() : MutableLiveData<String> {

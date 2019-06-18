@@ -38,4 +38,8 @@
         <item name="cardBackgroundColor">@color/colorWhite</item>
     </style>
 
+    <style name="TextView.Content" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/color_content</item>
+    </style>
+
 </resources>
