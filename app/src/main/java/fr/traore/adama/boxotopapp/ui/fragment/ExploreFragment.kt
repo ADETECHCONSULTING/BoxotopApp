@@ -74,8 +74,4 @@ class ExploreFragment : BaseFragment() {
         })
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-    }
 }

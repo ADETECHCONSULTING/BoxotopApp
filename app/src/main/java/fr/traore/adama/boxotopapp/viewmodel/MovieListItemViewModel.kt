@@ -10,7 +10,7 @@ class MovieListItemViewModel: BaseViewModel(){
     private val overview = MutableLiveData<String>()
 
     fun bind(movie: MovieItem){
-        imageUrl.value = Constants.BASE_IMAGE_URL+movie.posterPath
+        imageUrl.value = Constants.BASE_IMAGE_URL+movie.poster_path
         title.value = movie.title
         overview.value = movie.overview
     }

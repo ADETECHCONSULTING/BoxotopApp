@@ -14,32 +14,20 @@ data class MovieResponse(
 )
 
 data class MovieItem(
-    @Json(name = "adult")
-    val adult: Boolean,
     @Json(name = "backdrop_path")
-    val backdropPath: String,
-    @Json(name = "genre_ids")
-    val genreIds: List<Int>,
+    val backdrop_path: String,
     @Json(name = "id")
     val id: Int,
-    @Json(name = "original_language")
-    val originalLanguage: String,
-    @Json(name = "original_title")
-    val originalTitle: String,
     @Json(name = "overview")
     val overview: String,
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val poster_path: String,
     @Json(name = "release_date")
-    val releaseDate: String,
+    val release_date: String,
     @Json(name = "title")
     val title: String,
     @Json(name = "video")
-    val video: Boolean,
-    @Json(name = "vote_average")
-    val voteAverage: Double,
-    @Json(name = "vote_count")
-    val voteCount: Int
+    val video: Boolean
 )
