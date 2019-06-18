@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface MovieApi{
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     fun getPopularMovies(
         @Query("api_key") apiKey:String,
         @Query("language") language: String,
@@ -17,7 +17,7 @@ interface MovieApi{
     ) : Observable<MovieResponse>
 
 
-    @GET("/movie/{movie_id}")
+    @GET("movie/{movie_id}")
     fun getMovieDetail(
         @Path("movie_id") id:Int,
         @Query("api_key") apiKey:String,

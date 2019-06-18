@@ -7,7 +7,7 @@ class Constants {
 
     companion object {
         const val RC_SIGN_IN = 9001
-        const val BASE_URL: String = "https://api.themoviedb.org/3"
+        const val BASE_URL: String = "https://api.themoviedb.org/3/"
         const val BASE_IMAGE_URL: String = "https://image.tmdb.org/t/p/w500/"
         const val API_KEY: String = BuildConfig.ApiKey;
     }
