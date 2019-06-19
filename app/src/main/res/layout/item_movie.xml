@@ -27,7 +27,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/txvTitle"/>
+                    app:layout_constraintBottom_toTopOf="@+id/txvTitle" android:contentDescription="@null"/>
 
             <TextView
                     android:id="@+id/txvTitle"

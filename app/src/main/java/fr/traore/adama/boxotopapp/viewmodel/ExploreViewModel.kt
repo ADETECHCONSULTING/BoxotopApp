@@ -2,7 +2,6 @@ package fr.traore.adama.boxotopapp.viewmodel
 
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import fr.traore.adama.boxotopapp.R
 import fr.traore.adama.boxotopapp.model.MovieResponse
@@ -12,8 +11,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
-class ExploreViewModel() : BaseViewModel() {
-    val Tag: String = ExploreViewModel::class.java.simpleName;
+class ExploreViewModel : BaseViewModel() {
+    private val TAG: String = ExploreViewModel::class.java.simpleName
     private var myMovieListAdapter = MovieListAdapter()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
@@ -25,7 +24,7 @@ class ExploreViewModel() : BaseViewModel() {
     }
 
 
-    fun loadMovies(){
+    private fun loadMovies(){
         subscription = movieApi.getPopularMovies(Constants.API_KEY, "fr", 1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -53,7 +52,7 @@ class ExploreViewModel() : BaseViewModel() {
 
     private fun onRetrieveMoviesListError(error: String){
         errorMessage.value = R.string.movies_fetch_error
-        Log.d(Tag, error)
+        Log.d(TAG, error)
     }
 
     override fun onCleared() {
@@ -63,15 +62,8 @@ class ExploreViewModel() : BaseViewModel() {
             subscription.dispose()
     }
 
-
-    fun getLoadingVisibility() : LiveData<Int> {
-        return loadingVisibility
-    }
-
     fun getMovieListAdapter() : MovieListAdapter{
         return myMovieListAdapter
     }
-
-
 
 }

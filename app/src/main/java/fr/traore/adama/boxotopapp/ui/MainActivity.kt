@@ -1,11 +1,7 @@
 package fr.traore.adama.boxotopapp.ui
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import fr.traore.adama.boxotopapp.R
@@ -44,11 +40,15 @@ class MainActivity : AppCompatActivity() {
         ft.commit()
     }
 
-    fun clearBackStack(){
+    private fun clearBackStack(){
         val manager = supportFragmentManager
         if(manager.backStackEntryCount > 0){
             val first = manager.getBackStackEntryAt(0)
             manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
+    }
+
+    fun setTitle(title: String){
+        toolbar.title = title
     }
 }

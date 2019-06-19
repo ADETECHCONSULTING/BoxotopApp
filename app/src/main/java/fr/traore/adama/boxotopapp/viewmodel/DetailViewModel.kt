@@ -10,20 +10,20 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class DetailViewModel(val movieId:Int?) : BaseViewModel() {
-    val Tag: String = DetailViewModel::class.java.simpleName;
+    private val TAG: String = DetailViewModel::class.java.simpleName
     val errorClickListener = View.OnClickListener { loadMovieDetails() }
-    val movieTitle = MutableLiveData<String>()
-    val movieOverview = MutableLiveData<String>()
-    val movieImageUrl = MutableLiveData<String>()
-    val movieRealaseDate = MutableLiveData<String>()
-    val movieRating = MutableLiveData<Double>()
+    private val movieTitle = MutableLiveData<String>()
+    private val movieOverview = MutableLiveData<String>()
+    private val movieImageUrl = MutableLiveData<String>()
+    private val movieRealaseDate = MutableLiveData<String>()
+    private val movieRating = MutableLiveData<Double>()
 
 
     init {
         loadMovieDetails()
     }
 
-    fun loadMovieDetails(){
+    private fun loadMovieDetails(){
         if (movieId != null) {
             subscription = movieApi.getMovieDetail(movieId, Constants.API_KEY, "fr")
                 .subscribeOn(Schedulers.io())
@@ -56,7 +56,7 @@ class DetailViewModel(val movieId:Int?) : BaseViewModel() {
 
     private fun onRetrieveMoviesListError(error: String){
         errorMessage.value = R.string.movie_detail_fetch_error
-        Log.d(Tag, error)
+        Log.d(TAG, error)
     }
 
     override fun onCleared() {

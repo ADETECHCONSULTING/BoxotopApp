@@ -34,7 +34,7 @@
                 android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
-                tools:background="@color/colorPrimary"
+                tools:background="@color/colorPrimary" android:contentDescription="@null"
                 app:picasso="@{viewModel.getImageUrl()}"
         />
 

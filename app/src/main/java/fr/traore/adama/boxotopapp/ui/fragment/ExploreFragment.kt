@@ -28,6 +28,8 @@ class ExploreFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        activity?.title = getString(R.string.explore_title)
+
         setHasOptionsMenu(true)
 
         // Inflate the layout for this fragment
