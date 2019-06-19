@@ -17,6 +17,7 @@
                 tools:text="Harry potter and the deathly hollows - Part 2"
                 style="@style/TextAppearance.AppCompat.Title"
                 android:gravity="center"
+                app:mutableText="@{viewModel.getTitle()}"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
@@ -26,32 +27,36 @@
         <ImageView
                 android:id="@+id/imvMovie"
                 android:layout_width="@dimen/image_detail_width"
-                android:layout_height="@dimen/image_detail_height"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/txvTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
                 tools:background="@color/colorPrimary"
+                app:picasso="@{viewModel.getImageUrl()}"
         />
 
         <TextView
                 android:id="@+id/txvReleaseDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Release date : 10 nov 2010"
+                android:text="@string/release_date"
                 style="@style/TextView.Content"
                 app:layout_constraintTop_toTopOf="@id/imvMovie"
                 app:layout_constraintStart_toEndOf="@id/imvMovie"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                app:mutableAppendText="@{viewModel.getReleaseDate()}"
         />
 
         <TextView
                 android:id="@+id/txvCritics"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Critics"
+                android:text="@string/critics"
                 style="@style/TextView.Content"
                 app:layout_constraintTop_toBottomOf="@id/txvReleaseDate"
                 app:layout_constraintStart_toStartOf="@id/txvReleaseDate"
@@ -67,6 +72,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/txvCritics"
                 app:layout_constraintStart_toEndOf="@id/txvCritics"
                 android:layout_marginStart="8dp"
+                android:stepSize="1.0"
+                app:fillRating="@{viewModel.getRating()}"
         />
 
         <TextView
@@ -92,6 +99,8 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
+                app:mutableText="@{viewModel.getOverview()}"
+                android:ellipsize="end"
         />
 
 

@@ -29,5 +29,7 @@ data class MovieItem(
     @Json(name = "title")
     val title: String,
     @Json(name = "video")
-    val video: Boolean
+    val video: Boolean,
+    @Json(name = "vote_average")
+    val vote_average: Double
 )

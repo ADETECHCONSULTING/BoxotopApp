@@ -38,3 +38,7 @@ fun View.getParentActivity(): AppCompatActivity?{
 fun String.searchable() : String{
     return this.toLowerCase().trim()
 }
+
+fun Double.half() : Double{
+    return this / 2
+}

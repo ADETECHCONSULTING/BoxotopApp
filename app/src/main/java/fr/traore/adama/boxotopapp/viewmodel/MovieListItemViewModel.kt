@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import fr.traore.adama.boxotopapp.model.MovieItem
 import fr.traore.adama.boxotopapp.utils.Constants
 
-class MovieListItemViewModel: BaseViewModel(){
+class MovieListItemViewModel : BaseViewModel(){
     private val imageUrl = MutableLiveData<String>()
     private val title = MutableLiveData<String>()
     private val overview = MutableLiveData<String>()

@@ -5,8 +5,10 @@
     <string name="explore_title">Box office</string>
     <string name="detail_title">Détail</string>
     <string name="retry">réessayer</string>
-    <string name="movies_fetch_error">Erreur lors du chargement des films...</string>
-    <string name="movie_detail_fetch_error">Erreur lors du chargement du film...</string>
+    <string name="movies_fetch_error">Erreur lors du chargement des films…</string>
+    <string name="movie_detail_fetch_error">Erreur lors du chargement du film…</string>
     <string name="overview"><u>Synopsis</u></string>
+    <string name="release_date">Date de sortie : %1$s</string>
+    <string name="critics">Critiques</string>
 
 </resources>

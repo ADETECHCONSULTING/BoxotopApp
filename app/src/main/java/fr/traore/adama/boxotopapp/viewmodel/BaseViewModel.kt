@@ -9,7 +9,7 @@ import fr.traore.adama.boxotopapp.network.MovieApi
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel() : ViewModel() {
 
     @Inject
     lateinit var movieApi: MovieApi

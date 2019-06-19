@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
-class ExploreViewModel : BaseViewModel() {
+class ExploreViewModel() : BaseViewModel() {
     val Tag: String = ExploreViewModel::class.java.simpleName;
     private var myMovieListAdapter = MovieListAdapter()
 
@@ -64,7 +64,6 @@ class ExploreViewModel : BaseViewModel() {
     }
 
 
-
     fun getLoadingVisibility() : LiveData<Int> {
         return loadingVisibility
     }
@@ -72,5 +71,7 @@ class ExploreViewModel : BaseViewModel() {
     fun getMovieListAdapter() : MovieListAdapter{
         return myMovieListAdapter
     }
+
+
 
 }

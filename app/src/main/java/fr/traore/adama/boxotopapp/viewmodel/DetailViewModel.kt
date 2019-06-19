@@ -1,6 +1,5 @@
 package fr.traore.adama.boxotopapp.viewmodel
 
-import android.graphics.Movie
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +12,12 @@ import io.reactivex.schedulers.Schedulers
 class DetailViewModel(val movieId:Int?) : BaseViewModel() {
     val Tag: String = DetailViewModel::class.java.simpleName;
     val errorClickListener = View.OnClickListener { loadMovieDetails() }
-    val currentMovie: MutableLiveData<MovieItem> = MutableLiveData()
+    val movieTitle = MutableLiveData<String>()
+    val movieOverview = MutableLiveData<String>()
+    val movieImageUrl = MutableLiveData<String>()
+    val movieRealaseDate = MutableLiveData<String>()
+    val movieRating = MutableLiveData<Double>()
+
 
     init {
         loadMovieDetails()
@@ -43,7 +47,11 @@ class DetailViewModel(val movieId:Int?) : BaseViewModel() {
     }
 
     private fun onRetrieveMoviesListSuccess(movieItem: MovieItem){
-        currentMovie.value = movieItem
+        movieTitle.value = movieItem.title
+        movieImageUrl.value = Constants.BASE_IMAGE_URL+ movieItem.poster_path
+        movieOverview.value = movieItem.overview
+        movieRating.value = movieItem.vote_average
+        movieRealaseDate.value = movieItem.release_date
     }
 
     private fun onRetrieveMoviesListError(error: String){
@@ -58,15 +66,25 @@ class DetailViewModel(val movieId:Int?) : BaseViewModel() {
             subscription.dispose()
     }
 
-    fun getImageUrl() : String? {
-        return Constants.BASE_IMAGE_URL+currentMovie.value?.poster_path
+    fun getImageUrl() : MutableLiveData<String> {
+        return movieImageUrl
     }
 
-    fun getTitle() : String? {
-        return currentMovie.value?.title
+    fun getTitle() : MutableLiveData<String> {
+        return movieTitle
     }
 
-    fun getOverview() : String? {
-        return currentMovie.value?.overview
+    fun getOverview() : MutableLiveData<String> {
+        return movieOverview
     }
+
+    fun getReleaseDate() : MutableLiveData<String> {
+        return movieRealaseDate
+    }
+
+    fun getRating() : MutableLiveData<Double> {
+        return movieRating
+    }
+
+
 }
