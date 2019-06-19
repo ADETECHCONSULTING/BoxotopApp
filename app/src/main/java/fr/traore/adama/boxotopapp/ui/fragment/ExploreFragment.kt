@@ -1,11 +1,10 @@
 package fr.traore.adama.boxotopapp.ui.fragment
 
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -53,25 +52,35 @@ class ExploreFragment : BaseFragment() {
         return view
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, menuInflater)
 
-        val searchMenuItem = menu.findItem(R.id.action_search)
-        val searchView = searchMenuItem.actionView as SearchView
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchManager: SearchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.getMovieListAdapter().filterData(newText)
-                return false
-            }
+        var searchView: SearchView? = null
+        if(searchItem != null){
+            searchView = searchItem.actionView as SearchView
 
-            override fun onQueryTextSubmit(query: String): Boolean {
-                // task HERE
-                return false
-            }
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
-        })
+                override fun onQueryTextChange(newText: String): Boolean {
+                    viewModel.getMovieListAdapter().filterData(newText)
+                    return false
+                }
+
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    // task HERE
+                    return false
+                }
+
+            })
+        }
+
+        searchView?.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
     }
+
 
 }

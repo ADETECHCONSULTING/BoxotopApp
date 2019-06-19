@@ -23,22 +23,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.menu_toolbar, menu)
-
-        val searchItem = menu?.findItem(R.id.action_search)
-        val searchManager:SearchManager = this.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-
-        var searchView: SearchView? = null
-        if(searchItem != null){
-            searchView = searchItem.actionView as SearchView
-        }
-
-        searchView?.setSearchableInfo(searchManager.getSearchableInfo(this.componentName))
-
-        return super.onCreateOptionsMenu(menu)
-    }
 
     override fun onBackPressed() {
         val fragmentManager = supportFragmentManager
