@@ -60,28 +60,27 @@ class ExploreFragment : BaseFragment() {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
 
         val searchItem = menu.findItem(R.id.action_search)
+        val refreshItem = menu.findItem(R.id.action_refresh)
         val searchManager: SearchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
-        var searchView: SearchView? = null
-        if(searchItem != null){
-            searchView = searchItem.actionView as SearchView
+        val searchView = searchItem?.actionView as SearchView
 
-            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
-                override fun onQueryTextChange(newText: String): Boolean {
-                    viewModel.getMovieListAdapter().filterData(newText)
-                    return false
-                }
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.getMovieListAdapter().filterData(newText)
+                return false
+            }
 
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    // task HERE
-                    return false
-                }
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
 
-            })
-        }
+        })
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
 
-        searchView?.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+        refreshItem?.setOnMenuItemClickListener(viewModel.refreshOnClickListener)
+
     }
 
 

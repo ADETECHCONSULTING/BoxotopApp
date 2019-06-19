@@ -1,6 +1,7 @@
 package fr.traore.adama.boxotopapp.viewmodel
 
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import fr.traore.adama.boxotopapp.R
@@ -17,6 +18,7 @@ class ExploreViewModel : BaseViewModel() {
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadMovies() }
+    val refreshOnClickListener = MenuItem.OnMenuItemClickListener { loadMovies() }
 
 
     init {
@@ -24,7 +26,7 @@ class ExploreViewModel : BaseViewModel() {
     }
 
 
-    private fun loadMovies(){
+    fun loadMovies() : Boolean {
         subscription = movieApi.getPopularMovies(Constants.API_KEY, "fr", 1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -34,6 +36,9 @@ class ExploreViewModel : BaseViewModel() {
                 {result -> onRetrieveMoviesListSuccess(result)},
                 {error -> onRetrieveMoviesListError(error.localizedMessage)}
             )
+
+        //MenuItem.ClickListener need a boolean
+        return true
     }
 
     private fun onRetrieveMoviesListStart(){
